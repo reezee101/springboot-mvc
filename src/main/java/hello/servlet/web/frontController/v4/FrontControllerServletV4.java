@@ -42,12 +42,12 @@ public class FrontControllerServletV4 extends HttpServlet {
 
         //paramMap
         Map<String, String> paramMap = new HashMap<>();
+        Map<String, Object> model = new HashMap<>();
         req.getParameterNames().asIterator()
                 .forEachRemaining(paramName -> paramMap.put(paramName, req.getParameter(paramName)));
-        ModelView view = controllerV4.process(paramMap);
+        String view = controllerV4.process(paramMap,model);
 
-        String viewName = view.getViewName();
-        MyView mv = new MyView("/WEB-INF/views/" + viewName + ".jsp");
-        mv.render(view.getModel(), req, resp);
+        MyView mv = new MyView("/WEB-INF/views/" + view + ".jsp");
+        mv.render(model, req, resp);
     }
 }

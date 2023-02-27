@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class ModelView {
 
-    private String viewName;
-    private Map<String, Object> model = new HashMap<>();
+    private String viewName;    //view 의 논리이름
+    private Map<String, Object> model = new HashMap<>();    //모델
 
     public ModelView(String viewName) {
         this.viewName = viewName;

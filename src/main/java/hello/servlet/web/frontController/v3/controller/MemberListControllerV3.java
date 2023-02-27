@@ -16,7 +16,7 @@ public class MemberListControllerV3 implements ControllerV3 {
     public ModelView process(Map<String, String> paramMap) {
 
         List<Member> members = memberRepository.findAll();
-        ModelView mv = new ModelView("members");
+        ModelView mv = new ModelView("members");    //view의 논리이름 설정
         mv.getModel().put("members", members);
 
         return mv;

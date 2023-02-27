@@ -41,12 +41,14 @@ public class FrontControllerServletV3 extends HttpServlet {
 
         //paramMap
         Map<String, String> paramMap = new HashMap<>();
+        //파라미터 다 꺼내기
         req.getParameterNames().asIterator()
                 .forEachRemaining(paramName -> paramMap.put(paramName, req.getParameter(paramName)));
         ModelView view = controllerV3.process(paramMap);
 
-        String viewName = view.getViewName();
-        MyView mv = new MyView("/WEB-INF/views/" + viewName + ".jsp");
+        //논리이름을 물리 이름으로 변경
+        String viewName = view.getViewName();   //논리이름
+        MyView mv = new MyView("/WEB-INF/views/" + viewName + ".jsp");  //물리이름으로
         mv.render(view.getModel(), req, resp);
     }
 }
